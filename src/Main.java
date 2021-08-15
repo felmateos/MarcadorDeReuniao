@@ -15,12 +15,16 @@ public class Main {
         LocalDateTime f1 = LocalDateTime.of(2021, 6, 5, 23, 0);
         LocalDateTime i2 = LocalDateTime.of(2021, 6, 5, 11, 0);
         LocalDateTime f2 = LocalDateTime.of(2021, 6, 5, 12, 0);
+        LocalDateTime i3 = LocalDateTime.of(2021, 6, 5, 15, 0);
+        LocalDateTime f3 = LocalDateTime.of(2021, 6, 5, 16, 0);
 
         MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
 
         reuniao.marcarReuniaoEntre(inicioReuniao, finalReuniao, participantes);
         reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i1, f1);
         reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i2, f2);
-        reuniao.exibeParticipantesDisp();
+        reuniao.indicaDisponibilidadeDe("Felmateos", i3, f3);
+        reuniao.exibeDisponibilidades();
+        reuniao.mostraSobreposicao();
     }
 }
