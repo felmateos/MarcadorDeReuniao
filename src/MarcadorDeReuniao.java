@@ -80,7 +80,7 @@ public class MarcadorDeReuniao {
             if (!getdisponibilidades().get(participante).isEmpty()) {
                 for (Intervalo intervalo : getdisponibilidades().get(participante))
                     System.out.println("   I: " + intervalo.getDataInicial() + " - F: " + intervalo.getDataFinal());
-            } else System.out.println("   null");
+            } else System.out.println("   sem disponibilidades");
         }
     }
 
