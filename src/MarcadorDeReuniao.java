@@ -10,64 +10,75 @@ public class MarcadorDeReuniao {
     MarcadorDeReuniao() {}
 
     public void marcarReuniaoEntre(LocalDate dataInicial, LocalDate dataFinal, Collection<String> listaDeParticipantes) {
-        if (validaDatas(dataInicial, dataFinal)) return;
+        if (validaDatas(dataInicial, dataFinal)) return; //metodo de erro
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.listaDeParticipante = listaDeParticipantes;
         inicializaDisponibilidades();
     }
 
-    public void indicaDisponibilidadeDe(String participante, LocalDateTime inicio, LocalDateTime fim) {
-        if (validaDatas(inicio, fim) || !(disponibilidades.containsKey(participante))) return;
-        disponibilidades.get(participante).add(new Intervalo(inicio, fim));
-        Collections.sort(disponibilidades.get(participante));
+    public void inicializaDisponibilidades() {
+        for(String p : getListaDeParticipante()) {
+            List<Intervalo> intervalos = new ArrayList<>();
+            getdisponibilidades().put(p, intervalos);
+        }
     }
 
-    //incompleto
+    public void indicaDisponibilidadeDe(String participante, LocalDateTime inicio, LocalDateTime fim) {
+        if (verficaDatas(inicio, fim) && validaDatas(inicio, fim) || !(getdisponibilidades().containsKey(participante))) return; //metodo de erro
+        getdisponibilidades().get(participante).add(new Intervalo(inicio, fim));
+        Collections.sort(getdisponibilidades().get(participante));
+    }
+
     public void mostraSobreposicao() {
         List<Intervalo> sobreposicoes = encontraSobreposicao();
-        System.out.println("SOBREPOSICOES: ");
-        for(Intervalo intervalo : sobreposicoes) {
-            System.out.println("   I: " + intervalo.getDataInicial() + " - F: " + intervalo.getDataFinal());
-        }
-
-    }
-
-    public void inicializaDisponibilidades() {
-        for(String p : listaDeParticipante) {
-            List<Intervalo> intervalos = new ArrayList<>();
-            disponibilidades.put(p, intervalos);
-        }
+        if (!sobreposicoes.isEmpty()) {
+            System.out.println("SOBREPOSICOES: ");
+            for(Intervalo intervalo : sobreposicoes) {
+                System.out.println("   I: " + intervalo.getDataInicial() + " - F: " + intervalo.getDataFinal());
+            }
+        } else System.out.println("Nao existe um intervalo de tempo onde todos os participantes possam comparecer a reuniao.");
     }
 
     public List<Intervalo> encontraSobreposicao() {
-        List<Intervalo> sobreposicoes = new ArrayList<>();
-        List<Horario> disps = new LinkedList<>();
-        LocalDateTime inicio = null;
-        for(List<Intervalo> l : disponibilidades.values()) {
-            for(Intervalo i : l) {
-                disps.add(new Horario(i.getDataInicial(), "I"));
-                disps.add(new Horario(i.getDataFinal(), "F"));
-            }
-        }
-        Collections.sort(disps);
-        System.out.println("DISPS:");
-        for(Horario h : disps) {
-            if (inicio == null || (inicio.isBefore(h.getHorario()) && h.getIdentificador().equals("I")))
+        List<Intervalo> sobreposicoes = new LinkedList<>();
+        LinkedList<Horario> horarios = addHorarios();
+        LocalDateTime inicio = horarios.getFirst().getHorario();
+        boolean valido = false;
+        System.out.println("HORARIOS:");
+        for(Horario h : horarios) {
+            System.out.print("H: " + h.getHorario());
+            if (h.getIdentificador().equals("I") && inicio.isBefore(h.getHorario())) {
                 inicio = h.getHorario();
-            if (h.getIdentificador().equals("F")) {
+                System.out.print(" I");
+                valido = true;
+            } else if (h.getIdentificador().equals("F") && valido) {
                 sobreposicoes.add(new Intervalo(inicio, h.getHorario()));
+                System.out.print(" F");
+                valido = false;
             }
-            System.out.println("T: " + h.getHorario());
+            System.out.println();
         }
         return sobreposicoes;
     }
-    
+
+    public LinkedList<Horario> addHorarios() {
+        LinkedList<Horario> horarios = new LinkedList<>();
+        for(String s : getListaDeParticipante()) {
+            for(Intervalo i : getdisponibilidades().get(s)) {
+                horarios.add(new Horario(i.getDataInicial(), "I"));
+                horarios.add(new Horario(i.getDataFinal(), "F"));
+            }
+        }
+        Collections.sort(horarios);
+        return horarios;
+    }
+
     public void exibeDisponibilidades() {
-        for (String participante : listaDeParticipante) {
+        for (String participante : getListaDeParticipante()) {
             System.out.println(participante);
-            if (!disponibilidades.get(participante).isEmpty()) {
-                for (Intervalo intervalo : disponibilidades.get(participante))
+            if (!getdisponibilidades().get(participante).isEmpty()) {
+                for (Intervalo intervalo : getdisponibilidades().get(participante))
                     System.out.println("   I: " + intervalo.getDataInicial() + " - F: " + intervalo.getDataFinal());
             } else System.out.println("   null");
         }
@@ -81,9 +92,15 @@ public class MarcadorDeReuniao {
             dataFim = (LocalDateTime) fim;
         } catch (Exception e) {
             dataInicio = LocalDateTime.parse(inicio.toString()+"T00:00");
-            dataFim = LocalDateTime.parse(fim.toString()+"T00:00");
+            dataFim = LocalDateTime.parse(fim.toString()+"T23:59");
         }
-        return (dataInicio.equals(dataFim) || dataInicio.isAfter(dataFim));
+        return (!dataInicio.equals(dataFim) && !dataInicio.isAfter(dataFim));
+    }
+
+    public boolean verficaDatas(LocalDateTime inicio, LocalDateTime fim) {
+        LocalDateTime inicioReuniao = LocalDateTime.parse(getDataInicial().toString()+"T00:00");
+        LocalDateTime fimReuniao = LocalDateTime.parse(getDataFinal().toString()+"T23:59");
+        return (inicio.isAfter(inicioReuniao) && fim.isBefore(fimReuniao));
     }
 
     public LocalDate getDataFinal() {

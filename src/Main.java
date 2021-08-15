@@ -11,12 +11,12 @@ public class Main {
         participantes.add("AdrianoBarbudo");
         participantes.add("Felmateos");
 
-        LocalDateTime i1 = LocalDateTime.of(2021, 6, 5, 22, 0);
-        LocalDateTime f1 = LocalDateTime.of(2021, 6, 5, 23, 0);
-        LocalDateTime i2 = LocalDateTime.of(2021, 6, 5, 11, 0);
-        LocalDateTime f2 = LocalDateTime.of(2021, 6, 5, 12, 0);
-        LocalDateTime i3 = LocalDateTime.of(2021, 6, 5, 15, 0);
-        LocalDateTime f3 = LocalDateTime.of(2021, 6, 5, 16, 0);
+        LocalDateTime i1 = LocalDateTime.of(2021, 6, 5, 20, 0);
+        LocalDateTime f1 = LocalDateTime.of(2021, 6, 5, 22, 0);
+        LocalDateTime i2 = LocalDateTime.of(2021, 6, 5, 8, 0);
+        LocalDateTime f2 = LocalDateTime.of(2021, 6, 5, 10, 0);
+        LocalDateTime i3 = LocalDateTime.of(2021, 6, 5, 9, 0);
+        LocalDateTime f3 = LocalDateTime.of(2021, 6, 5, 21, 0);
 
         MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
 
