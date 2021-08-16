@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Joe");
         System.out.println("Joe Mama");
         LocalDate inicioReuniao = LocalDate.of(2021, 6, 5);
         LocalDate finalReuniao = LocalDate.of(2021, 6, 6);
