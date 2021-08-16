@@ -5,6 +5,8 @@ public class Sala {
     String local;
     String observacoes;
 
+    Sala() {}
+
     Sala (String nome, int capacidadeMaxima, String descricao) {
         this.nome = nome;
         this.capacidadeMaxima = capacidadeMaxima;
@@ -35,7 +37,7 @@ public class Sala {
         this.nome = nome;
     }
 
-    public void setCapacidadeMaxima(int capacidadeMaxima) {
+    public void setCapacidade(int capacidadeMaxima) {
         this.capacidadeMaxima = capacidadeMaxima;
     }
 

@@ -45,18 +45,22 @@ public class MarcadorDeReuniao {
         LinkedList<Horario> horarios = addHorarios();
         LocalDateTime inicio = horarios.getFirst().getHorario();
         boolean valido = false;
+        int cont = getListaDeParticipante().size();
+        System.out.println("CONT: " + cont);
         System.out.println("HORARIOS:");
         for(Horario h : horarios) {
-            System.out.print("H: " + h.getHorario());
+            System.out.print("H: " + h.getHorario() + h.getIdentificador());
             if (h.getIdentificador().equals("I") && inicio.isBefore(h.getHorario())) {
                 inicio = h.getHorario();
                 System.out.print(" I");
                 valido = true;
-            } else if (h.getIdentificador().equals("F") && valido) {
+            } else if (h.getIdentificador().equals("F") && valido && cont == 0) {
                 sobreposicoes.add(new Intervalo(inicio, h.getHorario()));
                 System.out.print(" F");
                 valido = false;
             }
+            if (h.getIdentificador().equals("I") && cont > 0) cont--;
+            else cont++;
             System.out.println();
         }
         return sobreposicoes;
