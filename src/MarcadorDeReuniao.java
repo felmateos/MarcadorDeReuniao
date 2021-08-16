@@ -23,7 +23,7 @@ public class MarcadorDeReuniao {
             getdisponibilidades().put(p, intervalos);
         }
     }
-
+    // criar verificacao para horarios que ja fazem parte das disponibilidades do participante
     public void indicaDisponibilidadeDe(String participante, LocalDateTime inicio, LocalDateTime fim) {
         if (verficaDatas(inicio, fim) && validaDatas(inicio, fim) || !(getdisponibilidades().containsKey(participante))) return; //metodo de erro
         getdisponibilidades().get(participante).add(new Intervalo(inicio, fim));

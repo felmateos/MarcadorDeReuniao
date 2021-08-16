@@ -10,6 +10,7 @@ public class Main {
         List<String> participantes = new ArrayList<>();
         participantes.add("AdrianoBarbudo");
         participantes.add("Felmateos");
+        participantes.add("Fescobar");
 
         LocalDateTime i1 = LocalDateTime.of(2021, 6, 5, 12, 0);
         LocalDateTime f1 = LocalDateTime.of(2021, 6, 5, 16, 0);
@@ -23,8 +24,8 @@ public class Main {
         reuniao.marcarReuniaoEntre(inicioReuniao, finalReuniao, participantes);
         System.out.println(reuniao.getDataInicial());
         reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i1, f1);
-        reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i2, f2);
-        reuniao.indicaDisponibilidadeDe("Felmateos", i3, f3);
+        reuniao.indicaDisponibilidadeDe("Felmateos", i2, f2);
+        reuniao.indicaDisponibilidadeDe("Fescobar", i3, f3);
         reuniao.exibeDisponibilidades();
         reuniao.mostraSobreposicao();
     }
