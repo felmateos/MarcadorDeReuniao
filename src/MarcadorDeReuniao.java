@@ -94,7 +94,7 @@ public class MarcadorDeReuniao {
             dataInicio = LocalDateTime.parse(inicio.toString()+"T00:00");
             dataFim = LocalDateTime.parse(fim.toString()+"T23:59");
         }
-        return (!dataInicio.equals(dataFim) && !dataInicio.isAfter(dataFim));
+        return (dataInicio.equals(dataFim) || dataInicio.isAfter(dataFim));
     }
 
     public boolean verficaDatas(LocalDateTime inicio, LocalDateTime fim) {

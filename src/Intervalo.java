@@ -9,20 +9,20 @@ public class Intervalo implements Comparable<Intervalo>{
        this.dataFinal = dataFinal;
     }
 
-    public void setDataInicial(LocalDateTime dataInicial) {
-        this.dataInicial = dataInicial;
-    }
-
-    public void setDataFinal(LocalDateTime dataFinal) {
-        this.dataFinal = dataFinal;
-    }
-
     public LocalDateTime getDataInicial() {
         return dataInicial;
     }
 
     public LocalDateTime getDataFinal() {
         return dataFinal;
+    }
+
+    public void setDataInicial(LocalDateTime dataInicial) {
+        this.dataInicial = dataInicial;
+    }
+
+    public void setDataFinal(LocalDateTime dataFinal) {
+        this.dataFinal = dataFinal;
     }
 
     @Override

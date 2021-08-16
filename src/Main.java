@@ -21,6 +21,7 @@ public class Main {
         MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
 
         reuniao.marcarReuniaoEntre(inicioReuniao, finalReuniao, participantes);
+        System.out.println(reuniao.getDataInicial());
         reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i1, f1);
         reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i2, f2);
         reuniao.indicaDisponibilidadeDe("Felmateos", i3, f3);
