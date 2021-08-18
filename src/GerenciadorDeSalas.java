@@ -8,42 +8,71 @@ public class GerenciadorDeSalas {
     GerenciadorDeSalas() {}
 
     public void adicionaSalaChamada(String nome, int capacidadeMaxima, String descricao) {
-        adicionaSala(new Sala(nome, capacidadeMaxima, descricao));
+        try {
+            if (encontraSala(nome).getNome().equals(nome)) System.out.println("Sala ja existente.");
+        } catch (NullPointerException e) {
+            adicionaSala(new Sala(nome, capacidadeMaxima, descricao));
+        }
     }
 
     public void removeSalaChamada(String nomeDaSala) {
-        for(Sala s : listaDeSalas()) {
-            if (s.getNome().equals(nomeDaSala)) {
-                listaDeSalas.remove(s);
-                return;
-            }
+        try {
+            if(encontraSala(nomeDaSala) == null) throw new SalaInexistenteException("A sala: " + nomeDaSala +" nao existe.");
+            listaDeSalas().remove(encontraSala(nomeDaSala));
+        } catch (NullPointerException e) {
+            System.out.println("Sala nao encontrada.");
         }
-        System.out.println("Sala nao encontrada.");
-    }
-
-    public List<Sala> listaDeSalas() {
-        return listaDeSalas;
     }
 
     public void adicionaSala(Sala novaSala) {
-        listaDeSalas.add(novaSala);
+        try {
+            if (encontraSala(novaSala.getNome()).getNome().equals(novaSala.getNome())) System.out.println("Sala ja existente.");
+        } catch (NullPointerException e) {
+            listaDeSalas().add(novaSala);
+        }
     }
 
     public Reserva reservaSalaChamada(String nomeDaSala, LocalDateTime dataInicial, LocalDateTime dataFinal) {
-        for (Sala s : listaDeSalas) {
-            if (s.getNome().equals(nomeDaSala)) {
-                Reserva r = new Reserva(nomeDaSala, dataInicial, dataFinal);
-                r.setSala(s);
-                getListaDeReservas().add(r);
-                return r;
-            }
+        try {
+            if(encontraSala(nomeDaSala) == null) throw new SalaInexistenteException("A sala: " + nomeDaSala +" nao existe.");
+            if(reservaExistente(nomeDaSala, dataInicial, dataFinal)) throw new SalaJaReservadaException("A sala: " + nomeDaSala + " ja foi reservada.");
+            Reserva r = new Reserva(nomeDaSala, dataInicial, dataInicial);
+            r.setSala(encontraSala(nomeDaSala));
+            getListaDeReservas().add(r);
+            return r;
+        } catch (SalaInexistenteException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
+    public Sala encontraSala(String nomeDaSala) {
+        for(Sala s : listaDeSalas()) {
+            if (s.getNome().equals(nomeDaSala)) return s;
+        }
+        return null;
+    }
+
+    public boolean reservaExistente(String nomeDaSala, LocalDateTime inicio, LocalDateTime fim) {
+        for(Reserva r : getListaDeReservas()) {
+            if (r.getNomeDaSala().equals(nomeDaSala)
+                    && ((fim.isBefore(r.getInicio()) && inicio.isBefore(fim))
+                    || (inicio.isAfter(r.getFim()) && fim.isAfter(inicio)))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void cancelaReserva(Reserva cancelada) {
-        reservasParaSala(cancelada.nomeDaSala).remove(cancelada);
-        getListaDeReservas().remove(cancelada);
+        try {
+            if (getListaDeReservas().contains(cancelada)) {
+                reservasParaSala(cancelada.nomeDaSala).remove(cancelada);
+                getListaDeReservas().remove(cancelada);
+            } else System.out.println("Reserva nao encontrada");
+        } catch (NullPointerException e) {
+            System.out.println("Reserva nao encontrada.");
+        }
     }
 
     public Collection<Reserva> reservasParaSala(String nomeSala) {
@@ -55,6 +84,10 @@ public class GerenciadorDeSalas {
     }
 
     public void imprimeReservasDaSala(String nomeSala) {
+        if (reservasParaSala(nomeSala).isEmpty()) {
+            System.out.println("nao existem reservas para a sala: " + nomeSala);
+            return;
+        }
         int i = 1;
         for(Reserva r : reservasParaSala(nomeSala)) {
             System.out.println("Sala: " + nomeSala);
@@ -63,7 +96,7 @@ public class GerenciadorDeSalas {
         }
     }
 
-    public List<Sala> getListaDeSalas() {
+    public List<Sala> listaDeSalas() {
         return listaDeSalas;
     }
 

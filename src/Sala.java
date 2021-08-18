@@ -1,16 +1,15 @@
 public class Sala {
     String nome;
     int capacidadeMaxima;
-    String descricao;
     String local;
     String observacoes;
 
     Sala() {}
 
-    Sala (String nome, int capacidadeMaxima, String descricao) {
+    Sala (String nome, int capacidadeMaxima, String observacoes) {
         this.nome = nome;
         this.capacidadeMaxima = capacidadeMaxima;
-        this.descricao = descricao;
+        this.observacoes = observacoes;
     }
 
     public String getNome() {
@@ -19,10 +18,6 @@ public class Sala {
 
     public int getCapacidadeMaxima() {
         return capacidadeMaxima;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
     public String getLocal() {
@@ -39,10 +34,6 @@ public class Sala {
 
     public void setCapacidade(int capacidadeMaxima) {
         this.capacidadeMaxima = capacidadeMaxima;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public void setLocal(String local) {
