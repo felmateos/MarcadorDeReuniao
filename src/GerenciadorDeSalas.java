@@ -17,7 +17,7 @@ public class GerenciadorDeSalas {
 
     public void removeSalaChamada(String nomeDaSala) {
         try {
-            if(encontraSala(nomeDaSala) == null) throw new ReservaException("A sala '" + nomeDaSala + "' nao existe.");
+            if(encontraSala(nomeDaSala) == null) System.out.println("A sala '" + nomeDaSala + "' nao existe.");
             listaDeSalas().remove(encontraSala(nomeDaSala));
         } catch (NullPointerException e) {
             System.out.println("Sala nao encontrada.");
