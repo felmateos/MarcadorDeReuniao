@@ -38,7 +38,6 @@ public class teste2 {
         case6();
         case7();
         case8();
-        case8();
         case9();
         case10();
         case11();

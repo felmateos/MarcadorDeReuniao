@@ -17,7 +17,7 @@ public class GerenciadorDeSalas {
 
     public void removeSalaChamada(String nomeDaSala) {
         try {
-            if(encontraSala(nomeDaSala) == null) throw new SalaInexistenteException("A sala: " + nomeDaSala +" nao existe.");
+            if(encontraSala(nomeDaSala) == null) throw new ReservaException("A sala '" + nomeDaSala + "' nao existe.");
             listaDeSalas().remove(encontraSala(nomeDaSala));
         } catch (NullPointerException e) {
             System.out.println("Sala nao encontrada.");
@@ -34,34 +34,36 @@ public class GerenciadorDeSalas {
 
     public Reserva reservaSalaChamada(String nomeDaSala, LocalDateTime dataInicial, LocalDateTime dataFinal) {
         try {
-            if(encontraSala(nomeDaSala) == null) throw new SalaInexistenteException("A sala: " + nomeDaSala +" nao existe.");
-            if(reservaExistente(nomeDaSala, dataInicial, dataFinal)) throw new SalaJaReservadaException("A sala: " + nomeDaSala + " ja foi reservada.");
-            Reserva r = new Reserva(nomeDaSala, dataInicial, dataInicial);
+            if(encontraSala(nomeDaSala) == null || !reservaValida(nomeDaSala, dataInicial, dataFinal))
+                throw new ReservaException("A reserva para a sala '" + nomeDaSala + "' é invalida");
+            Reserva r = new Reserva(nomeDaSala, dataInicial, dataFinal);
             r.setSala(encontraSala(nomeDaSala));
             getListaDeReservas().add(r);
             return r;
-        } catch (SalaInexistenteException e) {
+        } catch (ReservaException e) {
             e.printStackTrace();
         }
         return null;
     }
 
     public Sala encontraSala(String nomeDaSala) {
-        for(Sala s : listaDeSalas()) {
+        for(Sala s : listaDeSalas) {
             if (s.getNome().equals(nomeDaSala)) return s;
         }
         return null;
     }
 
-    public boolean reservaExistente(String nomeDaSala, LocalDateTime inicio, LocalDateTime fim) {
-        for(Reserva r : getListaDeReservas()) {
-            if (r.getNomeDaSala().equals(nomeDaSala)
-                    && ((fim.isBefore(r.getInicio()) && inicio.isBefore(fim))
-                    || (inicio.isAfter(r.getFim()) && fim.isAfter(inicio)))) {
-                return true;
-            }
+    public boolean reservaValida(String nomeDaSala, LocalDateTime inicio, LocalDateTime fim) {
+        if(inicio.isAfter(fim)) {
+            System.out.println("hor inv");
+            return false;
         }
-        return false;
+        for(Reserva r : reservasParaSala(nomeDaSala)) {
+            if (inicio.isAfter(fim) || (inicio.isAfter(r.getInicio()) && inicio.isBefore(r.getFim()))
+            || (fim.isAfter(r.getInicio()) && fim.isBefore(fim)) )
+                return false;
+        }
+        return true;
     }
 
     public void cancelaReserva(Reserva cancelada) {
