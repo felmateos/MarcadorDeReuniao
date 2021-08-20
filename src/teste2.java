@@ -18,6 +18,7 @@ public class teste2 {
     public static Sala frescura = new Sala();
     public static Sala cloneMalignoDaB3 = new Sala();
     public static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
     public static void main(String[] args) {
         b3.setNome(nomeDaB3);
         b3.setLocal(localDaB3);

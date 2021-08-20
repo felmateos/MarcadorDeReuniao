@@ -10,7 +10,10 @@ public class MarcadorDeReuniao {
     MarcadorDeReuniao() {}
 
     public void marcarReuniaoEntre(LocalDate dataInicial, LocalDate dataFinal, Collection<String> listaDeParticipantes) {
-        if (validaDatas(dataInicial, dataFinal)) return; //metodo de erro
+        if (!validaDatas(dataInicial, dataFinal)) {
+            System.out.println("Data invalida.");
+            return;
+        }
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.listaDeParticipante = listaDeParticipantes;
@@ -23,9 +26,13 @@ public class MarcadorDeReuniao {
             getdisponibilidades().put(p, intervalos);
         }
     }
-    // criar verificacao para horarios que ja fazem parte das disponibilidades do participante
+
     public void indicaDisponibilidadeDe(String participante, LocalDateTime inicio, LocalDateTime fim) {
-        if (verficaDatas(inicio, fim) && validaDatas(inicio, fim) || !(getdisponibilidades().containsKey(participante))) return; //metodo de erro
+        if (!verificaDatas(inicio, fim) || !validaDatas(inicio, fim)
+                || !getdisponibilidades().containsKey(participante)) {
+            System.out.println("Data e/ou participante invalido(s)");
+            return;
+        }
         getdisponibilidades().get(participante).add(new Intervalo(inicio, fim));
         Collections.sort(getdisponibilidades().get(participante));
     }
@@ -38,6 +45,7 @@ public class MarcadorDeReuniao {
                 System.out.println("   Inicial: " + intervalo.getDataInicial() + " - Final: " + intervalo.getDataFinal());
             }
         } else System.out.println("\nNao existe um intervalo de tempo onde todos os participantes possam comparecer a reuniao.");
+        System.out.println();
     }
 
     public List<Intervalo> encontraSobreposicao() {
@@ -50,7 +58,7 @@ public class MarcadorDeReuniao {
         for(Horario h : horarios) {
             System.out.print("   " + h.getHorario() + ", tipo: " + h.getIdentificador());
             if (h.getIdentificador().equals("Inicial") && inicio.isBefore(h.getHorario())) {
-                System.out.print(" - (Novo inicio da sobreposicao " + (sobreposicoes.size()+1) + ")");
+                System.out.print(" - (Candidato a inicio da sobreposicao " + (sobreposicoes.size()+1) + ")");
                 inicio = h.getHorario();
                 valido = true;
             } else if (h.getIdentificador().equals("Final") && valido && cont == 0) {
@@ -97,11 +105,11 @@ public class MarcadorDeReuniao {
             dataInicio = LocalDateTime.parse(inicio.toString()+"T00:00");
             dataFim = LocalDateTime.parse(fim.toString()+"T23:59");
         }
-        return (dataInicio.equals(dataFim) || dataInicio.isAfter(dataFim));
+        return (dataInicio.isBefore(dataFim));
     }
 
-    public boolean verficaDatas(LocalDateTime inicio, LocalDateTime fim) {
-        LocalDateTime inicioReuniao = LocalDateTime.parse(getDataInicial().toString()+"T00:00");
+    public boolean verificaDatas(LocalDateTime inicio, LocalDateTime fim) {
+        LocalDateTime inicioReuniao = getDataInicial().atStartOfDay();
         LocalDateTime fimReuniao = LocalDateTime.parse(getDataFinal().toString()+"T23:59");
         return (inicio.isAfter(inicioReuniao) && fim.isBefore(fimReuniao));
     }

@@ -73,7 +73,6 @@ public class teste {
 
         try {
             marcadorDaReuniaoDaDiretoria.indicaDisponibilidadeDe(ale, LocalDateTime.of(dia15mes4de2004, LocalTime.of(3, 30)), LocalDateTime.of(dia18mes4de2004, LocalTime.of(4, 27)));
-
         }
         catch(Throwable e){
             e.printStackTrace();

@@ -4,7 +4,8 @@ import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        teste0();
+        ///LEMBRAR DE DAR RUN EM TODOS OS .JAVA PRA ATUALIZAR OS .CLASS ANTES DE ENTREGAR!!!
+        testeDireto();
         //gerenciarReuniao(); // opcional
     }
 
@@ -15,9 +16,9 @@ public class Main {
         int escolha;
         List<String> participantes = new LinkedList<>();
         MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
-        System.out.println("Quando a reunião tera inicio?");
+        System.out.println("Quando a reunião tera inicio? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)");
         inicioReuniao = LocalDate.parse(scanner.nextLine());
-        System.out.println("Quando a reunião tera fim?");
+        System.out.println("Quando a reunião tera fim? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)");
         fimReuniao = LocalDate.parse(scanner.nextLine());
         System.out.println("Quantos participantes a reunião tera?");
         int qntParticipantes = Integer.parseInt(scanner.nextLine());
@@ -46,9 +47,9 @@ public class Main {
     public static void indicarDisponibilidade(MarcadorDeReuniao reuniao) {
         System.out.println("Digite o nome do participante.");
         String participante = scanner.nextLine();
-        System.out.println("Digite a data inicial da disponibilidade.");
+        System.out.println("Digite a data inicial da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)");
         LocalDateTime inicio = LocalDateTime.parse(scanner.nextLine());
-        System.out.println("Digite a data final da disponibilidade.");
+        System.out.println("Digite a data final da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)");
         LocalDateTime fim = LocalDateTime.parse(scanner.nextLine());
         reuniao.indicaDisponibilidadeDe(participante, inicio, fim);
     }
@@ -88,6 +89,7 @@ public class Main {
     }
 
     public static void imprimirListaDeSalas(GerenciadorDeSalas gerenciadorDeSalas) {
+        System.out.println();
         for(Sala s : gerenciadorDeSalas.listaDeSalas()) {
             System.out.println("Sala: " + s.getNome() + ", Capacidade Maxima: " + s.getCapacidadeMaxima() + ", Observacoes: " + s.getObservacoes() + ", Local: " + s.getLocal());
         }
@@ -112,9 +114,9 @@ public class Main {
     public static void reservarSalaChamada(GerenciadorDeSalas gerenciadorDeSalas) {
         System.out.println("Qual o nome da sala para fazer a reserva?");
         String nomeSala = scanner.nextLine();
-        System.out.println("Qual a data inicial da reserva?");
+        System.out.println("Qual a data inicial da reserva? (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)");
         LocalDateTime inicio = LocalDateTime.parse(scanner.nextLine());
-        System.out.println("Qual a data final da reserva?");
+        System.out.println("Qual a data final da reserva? (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)");
         LocalDateTime fim = LocalDateTime.parse(scanner.nextLine());
         gerenciadorDeSalas.reservaSalaChamada(nomeSala, inicio, fim);
     }
@@ -128,7 +130,7 @@ public class Main {
         int i = 1;
         for (Reserva r : gerenciadorDeSalas.getListaDeReservas()) {
             if (r.getNomeDaSala().equals(nomeSala)) {
-                System.out.println(i + ". I: " + r.getInicio() + " - F: " + r.getFim());
+                System.out.println(i + ". Inicio: " + r.getInicio() + " - Fim: " + r.getFim());
                 reservas.add(r);
                 i++;
             }
@@ -147,7 +149,7 @@ public class Main {
         gerenciadorDeSalas.imprimeReservasDaSala(scanner.nextLine());
     }
 
-    public static void teste0() {
+    public static void testeDireto() {
         System.out.println("Joe Mama");
         LocalDate inicioReuniao = LocalDate.of(2021, 6, 5);
         LocalDate finalReuniao = LocalDate.of(2021, 6, 6);
@@ -155,19 +157,40 @@ public class Main {
         participantes.add("AdrianoBarbudo");
         participantes.add("Felmateos");
         participantes.add("Fescobar");
+
         LocalDateTime i1 = LocalDateTime.of(2021, 6, 5, 12, 0);
         LocalDateTime f1 = LocalDateTime.of(2021, 6, 5, 16, 0);
         LocalDateTime i2 = LocalDateTime.of(2021, 6, 5, 12, 0);
         LocalDateTime f2 = LocalDateTime.of(2021, 6, 5, 15, 0);
         LocalDateTime i3 = LocalDateTime.of(2021, 6, 5, 13, 0);
         LocalDateTime f3 = LocalDateTime.of(2021, 6, 5, 18, 0);
+
+        LocalDateTime i4 = LocalDateTime.of(2021, 6, 5, 19, 0);
+        LocalDateTime f4 = LocalDateTime.of(2021, 6, 5, 22, 0);
+        LocalDateTime i5 = LocalDateTime.of(2021, 6, 5, 18, 0);
+        LocalDateTime f5 = LocalDateTime.of(2021, 6, 5, 21, 30);
+        LocalDateTime i6 = LocalDateTime.of(2021, 6, 5, 21, 0);
+        LocalDateTime f6 = LocalDateTime.of(2021, 6, 5, 22, 0);
+
         MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
         reuniao.marcarReuniaoEntre(inicioReuniao, finalReuniao, participantes);
-        System.out.println(reuniao.getDataInicial());
+
         reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i1, f1);
+        reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i4, f4);
         reuniao.indicaDisponibilidadeDe("Felmateos", i2, f2);
+        reuniao.indicaDisponibilidadeDe("Felmateos", i5, f5);
         reuniao.indicaDisponibilidadeDe("Fescobar", i3, f3);
+        reuniao.indicaDisponibilidadeDe("Fescobar", i6, f6);
         reuniao.exibeDisponibilidades();
         reuniao.mostraSobreposicao();
+
+        /*
+        GerenciadorDeSalas gerenciadorDeSalas = new GerenciadorDeSalas();
+
+        gerenciadorDeSalas.adicionaSalaChamada("Salada", 3, "de tomate");
+        imprimirListaDeSalas(gerenciadorDeSalas);
+        gerenciadorDeSalas.reservaSalaChamada("Salada", reuniao.encontraSobreposicao().get(0).getDataInicial(), reuniao.encontraSobreposicao().get(0).getDataFinal());
+        gerenciadorDeSalas.imprimeReservasDaSala("Salada");
+        */
     }
 }

@@ -35,6 +35,7 @@ public class GerenciadorDeSalas {
     public Reserva reservaSalaChamada(String nomeDaSala, LocalDateTime dataInicial, LocalDateTime dataFinal) {
         try {
             if((encontraSala(nomeDaSala) == null) || !(reservaValida(nomeDaSala, dataInicial, dataFinal))) {
+                if(encontraSala(nomeDaSala) == null) System.out.println("A sala '" + nomeDaSala + "' nao existe.");
                 throw new ReservaException("A reserva para a sala '" + nomeDaSala + "' é invalida");
             }
             Reserva r = new Reserva(nomeDaSala, dataInicial, dataFinal);
@@ -61,9 +62,10 @@ public class GerenciadorDeSalas {
         }
         for(Reserva r : reservasParaSala(nomeDaSala)) {
             if ((inicio.isAfter(r.getInicio()) && inicio.isBefore(r.getFim()))
-            || (fim.isAfter(r.getInicio()) && fim.isBefore(fim)) )
+            || (fim.isAfter(r.getInicio()) && fim.isBefore(fim)) ) {
                 System.out.println("horario invalido.");
                 return false;
+            }
         }
         return true;
     }
@@ -93,8 +95,8 @@ public class GerenciadorDeSalas {
             return;
         }
         int i = 1;
+        System.out.println("Sala: " + nomeSala);
         for(Reserva r : reservasParaSala(nomeSala)) {
-            System.out.println("Sala: " + nomeSala);
             System.out.println("Reserva " + i + ":  Inicio: " + r.getInicio() + " - Fim: " + r.getFim());
             i++;
         }
