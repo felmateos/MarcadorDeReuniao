@@ -16,14 +16,14 @@ public class Main {
         int escolha;
         List<String> participantes = new LinkedList<>();
         MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
-        System.out.println("Quando a reunião tera inicio? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)");
+        System.out.println("Quando a reuniao tera inicio? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)");
         inicioReuniao = LocalDate.parse(scanner.nextLine());
-        System.out.println("Quando a reunião tera fim? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)");
+        System.out.println("Quando a reuniao tera fim? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)");
         fimReuniao = LocalDate.parse(scanner.nextLine());
-        System.out.println("Quantos participantes a reunião tera?");
+        System.out.println("Quantos participantes a reuniao tera?");
         int qntParticipantes = Integer.parseInt(scanner.nextLine());
         while (i <= qntParticipantes) {
-            System.out.println("Qual o nome do " + i + "º participante?");
+            System.out.println("Qual o nome do " + i + " participante?");
             participantes.add(scanner.nextLine());
             i++;
         }
