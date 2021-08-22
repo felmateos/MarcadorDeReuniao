@@ -2,8 +2,8 @@ import java.time.*;
 import java.util.*;
 
 public class GerenciadorDeSalas {
-    List<Sala> listaDeSalas = new LinkedList<>();
-    Collection<Reserva> listaDeReservas = new LinkedList<>();
+    private List<Sala> listaDeSalas = new LinkedList<>();
+    private Collection<Reserva> listaDeReservas = new LinkedList<>();
 
     GerenciadorDeSalas() {}
 
@@ -73,7 +73,7 @@ public class GerenciadorDeSalas {
     public void cancelaReserva(Reserva cancelada) {
         try {
             if (getListaDeReservas().contains(cancelada)) {
-                reservasParaSala(cancelada.nomeDaSala).remove(cancelada);
+                reservasParaSala(cancelada.getNomeDaSala()  ).remove(cancelada);
                 getListaDeReservas().remove(cancelada);
             } else System.out.println("Reserva nao encontrada");
         } catch (NullPointerException e) {

@@ -1,0 +1,199 @@
+Quando a reunião tera inicio? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)
+Quando a reunião tera fim? (Digite no formato: AAAA-MM-DD. Ex: 2021-01-30)
+Quantos participantes a reunião tera?
+Qual o nome do 1º participante?
+Qual o nome do 2º participante?
+Qual o nome do 3º participante?
+Qual o nome do 4º participante?
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+Digite o nome do participante.
+Digite a data inicial da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Digite a data final da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+Digite o nome do participante.
+Digite a data inicial da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Digite a data final da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+Digite o nome do participante.
+Digite a data inicial da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Digite a data final da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+Digite o nome do participante.
+Digite a data inicial da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Digite a data final da disponibilidade. (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+Disponibilidades de Adriano:
+   Inicial: 2021-01-13T02:00 - Final: 2021-01-13T04:00
+Disponibilidades de Felipe:
+   Inicial: 2021-01-13T02:00 - Final: 2021-01-13T03:00
+Disponibilidades de Gabriel:
+   Inicial: 2021-01-13T01:00 - Final: 2021-01-13T05:00
+Disponibilidades de Felipe Escobar:
+   Inicial: 2021-01-13T02:30 - Final: 2021-01-13T05:00
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+
+Horarios de todos os participantes (processo para encontrar a sobreposicao):
+   2021-01-13T01:00, tipo: Inicial
+   2021-01-13T02:00, tipo: Inicial - (Candidato a inicio da sobreposicao 1)
+   2021-01-13T02:00, tipo: Inicial
+   2021-01-13T02:30, tipo: Inicial - (Candidato a inicio da sobreposicao 1)
+   2021-01-13T03:00, tipo: Final - (Fim da sobreposicao 1)
+   2021-01-13T04:00, tipo: Final
+   2021-01-13T05:00, tipo: Final
+   2021-01-13T05:00, tipo: Final
+
+Sobreposicao de disponibilidades: 
+   Inicial: 2021-01-13T02:30 - Final: 2021-01-13T03:00
+
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+Qual o nome da sala?
+Qual a capacidade máxima da sala?
+Digite as observacoes referentes a sala.
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+
+Sala: Sala a, Capacidade Maxima: 4, Observacoes: sala azul, Local: null
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+Qual o nome da sala?
+Qual a capacidade máxima da sala?
+Digite as observacoes referentes a sala.
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+
+Sala: Sala a, Capacidade Maxima: 4, Observacoes: sala azul, Local: null
+Sala: Sala b, Capacidade Maxima: 4, Observacoes: sala vermelha, Local: null
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+Digite o nome da sala a ser removida.
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+
+Sala: Sala b, Capacidade Maxima: 4, Observacoes: sala vermelha, Local: null
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+Escolha o numero correspondente a acao desejada:
+1 - Reservar sala chamada.
+2 - Cancelar reserva.
+3 - Mostrar a lista de reservas de uma sala.
+4 - Sair do gerenciador de reservas.
+Qual o nome da sala para fazer a reserva?
+Qual a data inicial da reserva? (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Qual a data final da reserva? (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Escolha o numero correspondente a acao desejada:
+1 - Reservar sala chamada.
+2 - Cancelar reserva.
+3 - Mostrar a lista de reservas de uma sala.
+4 - Sair do gerenciador de reservas.
+Imprimir reservas de qual sala?
+Sala: Sala b
+Reserva 1:  Inicio: 2021-01-13T02:30 - Fim: 2021-01-13T03:00
+Escolha o numero correspondente a acao desejada:
+1 - Reservar sala chamada.
+2 - Cancelar reserva.
+3 - Mostrar a lista de reservas de uma sala.
+4 - Sair do gerenciador de reservas.
+Qual o nome da sala para fazer a reserva?
+Qual a data inicial da reserva? (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Qual a data final da reserva? (Digite no formato: AAAA-MM-DDThh:mm. Ex: 2021-01-30T08:30)
+Escolha o numero correspondente a acao desejada:
+1 - Reservar sala chamada.
+2 - Cancelar reserva.
+3 - Mostrar a lista de reservas de uma sala.
+4 - Sair do gerenciador de reservas.
+Imprimir reservas de qual sala?
+Sala: Sala b
+Reserva 1:  Inicio: 2021-01-13T02:30 - Fim: 2021-01-13T03:00
+Reserva 2:  Inicio: 2021-01-13T04:30 - Fim: 2021-01-13T05:30
+Escolha o numero correspondente a acao desejada:
+1 - Reservar sala chamada.
+2 - Cancelar reserva.
+3 - Mostrar a lista de reservas de uma sala.
+4 - Sair do gerenciador de reservas.
+Qual o nome da sala para cancelar a reserva?
+Reservas da Sala Sala b: 
+1. Inicio: 2021-01-13T02:30 - Fim: 2021-01-13T03:00
+2. Inicio: 2021-01-13T04:30 - Fim: 2021-01-13T05:30
+Qual deve ser removida?
+Escolha o numero correspondente a acao desejada:
+1 - Reservar sala chamada.
+2 - Cancelar reserva.
+3 - Mostrar a lista de reservas de uma sala.
+4 - Sair do gerenciador de reservas.
+Escolha o numero correspondente a acao desejada:
+1 - Adicionar sala chamada.
+2 - Remover sala chamada.
+3 - Mostrar a lista de salas.
+4 - Abrir gerenciador de reservas.
+5 - Sair do gerenciador de salas.
+Escolha o numero correspondente a acao desejada:
+1 - Indicar disponibilidade de participante.
+2 - Mostrar todas as disponibilidades dos participantes.
+3 - Mostrar as sobreposicoes de horarios.
+4 - Abrir gerenciador de salas.
+5 - Sair do marcador de reuniao.

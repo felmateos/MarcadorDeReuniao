@@ -1,8 +1,8 @@
 public class Sala {
-    String nome;
-    int capacidadeMaxima;
-    String local;
-    String observacoes;
+    private String nome;
+    private int capacidadeMaxima;
+    private String local;
+    private String observacoes;
 
     Sala() {}
 

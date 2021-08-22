@@ -5,8 +5,8 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         ///LEMBRAR DE DAR RUN EM TODOS OS .JAVA PRA ATUALIZAR OS .CLASS ANTES DE ENTREGAR!!!
-        testeDireto();
-        //gerenciarReuniao(); // opcional
+        //testeDireto();
+        gerenciarReuniao(); // opcional
     }
 
     public static void gerenciarReuniao() {
@@ -31,7 +31,7 @@ public class Main {
         while (true) {
             System.out.println("Escolha o numero correspondente a acao desejada:");
             System.out.println("1 - Indicar disponibilidade de participante.");
-            System.out.println("2 - Mostrar todas as disponibilidade dos participantes.");
+            System.out.println("2 - Mostrar todas as disponibilidades dos participantes.");
             System.out.println("3 - Mostrar as sobreposicoes de horarios.");
             System.out.println("4 - Abrir gerenciador de salas.");
             System.out.println("5 - Sair do marcador de reuniao.");

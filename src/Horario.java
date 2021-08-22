@@ -1,8 +1,8 @@
 import java.time.LocalDateTime;
 
 public class Horario implements Comparable<Horario>{
-    final private LocalDateTime horario;
-    final private String identificador;
+    private LocalDateTime horario;
+    private String identificador;
 
     Horario(LocalDateTime horario, String identificador) {
         this.horario = horario;

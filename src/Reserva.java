@@ -1,10 +1,10 @@
 import java.time.*;
 
 public class Reserva {
-    String nomeDaSala;
-    Sala sala;
-    LocalDateTime inicio;
-    LocalDateTime fim;
+    private String nomeDaSala;
+    private Sala sala;
+    private LocalDateTime inicio;
+    private LocalDateTime fim;
 
     Reserva () {}
 
