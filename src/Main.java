@@ -4,9 +4,7 @@ import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        ///LEMBRAR DE DAR RUN EM TODOS OS .JAVA PRA ATUALIZAR OS .CLASS ANTES DE ENTREGAR!!!
-        //testeDireto();
-        gerenciarReuniao(); // opcional
+        gerenciarReuniao();
     }
 
     public static void gerenciarReuniao() {
@@ -76,7 +74,7 @@ public class Main {
     public static void adicionarSalaChamada(GerenciadorDeSalas gerenciadorDeSalas) {
         System.out.println("Qual o nome da sala?");
         String nomeSala = scanner.nextLine();
-        System.out.println("Qual a capacidade máxima da sala?");
+        System.out.println("Qual a capacidade maxima da sala?");
         int capacidade = Integer.parseInt(scanner.nextLine());
         System.out.println("Digite as observacoes referentes a sala.");
         String observacoes = scanner.nextLine();
@@ -147,50 +145,5 @@ public class Main {
     public static void imprimirReservasDaSala(GerenciadorDeSalas gerenciadorDeSalas) {
         System.out.println("Imprimir reservas de qual sala?");
         gerenciadorDeSalas.imprimeReservasDaSala(scanner.nextLine());
-    }
-
-    public static void testeDireto() {
-        System.out.println("Joe Mama");
-        LocalDate inicioReuniao = LocalDate.of(2021, 6, 5);
-        LocalDate finalReuniao = LocalDate.of(2021, 6, 6);
-        List<String> participantes = new ArrayList<>();
-        participantes.add("AdrianoBarbudo");
-        participantes.add("Felmateos");
-        participantes.add("Fescobar");
-
-        LocalDateTime i1 = LocalDateTime.of(2021, 6, 5, 12, 0);
-        LocalDateTime f1 = LocalDateTime.of(2021, 6, 5, 16, 0);
-        LocalDateTime i2 = LocalDateTime.of(2021, 6, 5, 12, 0);
-        LocalDateTime f2 = LocalDateTime.of(2021, 6, 5, 15, 0);
-        LocalDateTime i3 = LocalDateTime.of(2021, 6, 5, 13, 0);
-        LocalDateTime f3 = LocalDateTime.of(2021, 6, 5, 18, 0);
-
-        LocalDateTime i4 = LocalDateTime.of(2021, 6, 5, 19, 0);
-        LocalDateTime f4 = LocalDateTime.of(2021, 6, 5, 22, 0);
-        LocalDateTime i5 = LocalDateTime.of(2021, 6, 5, 18, 0);
-        LocalDateTime f5 = LocalDateTime.of(2021, 6, 5, 21, 30);
-        LocalDateTime i6 = LocalDateTime.of(2021, 6, 5, 21, 0);
-        LocalDateTime f6 = LocalDateTime.of(2021, 6, 5, 22, 0);
-
-        MarcadorDeReuniao reuniao = new MarcadorDeReuniao();
-        reuniao.marcarReuniaoEntre(inicioReuniao, finalReuniao, participantes);
-
-        reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i1, f1);
-        reuniao.indicaDisponibilidadeDe("AdrianoBarbudo", i4, f4);
-        reuniao.indicaDisponibilidadeDe("Felmateos", i2, f2);
-        reuniao.indicaDisponibilidadeDe("Felmateos", i5, f5);
-        reuniao.indicaDisponibilidadeDe("Fescobar", i3, f3);
-        reuniao.indicaDisponibilidadeDe("Fescobar", i6, f6);
-        reuniao.exibeDisponibilidades();
-        reuniao.mostraSobreposicao();
-
-        /*
-        GerenciadorDeSalas gerenciadorDeSalas = new GerenciadorDeSalas();
-
-        gerenciadorDeSalas.adicionaSalaChamada("Salada", 3, "de tomate");
-        imprimirListaDeSalas(gerenciadorDeSalas);
-        gerenciadorDeSalas.reservaSalaChamada("Salada", reuniao.encontraSobreposicao().get(0).getDataInicial(), reuniao.encontraSobreposicao().get(0).getDataFinal());
-        gerenciadorDeSalas.imprimeReservasDaSala("Salada");
-        */
     }
 }
